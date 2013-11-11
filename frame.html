@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 	<head>
-		<title>re:log - Besucherstromanalyse per re:publica W-LAN</title>
-		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=950" >
+		<meta name="viewport" content="width=1265" >
 
-		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="data.js"></script>
-		<script type="text/javascript" src="sessions.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 		<style type="text/css">
 			html, body {
@@ -20,7 +17,7 @@
 			}
 			#content {
 				position: relative;
-				width: 950px;
+				width: 1265px;
 			}
 			#container {
 				position: absolute;
@@ -65,7 +62,7 @@
 			}
 			#slider {
 				position: absolute;
-				width: 950px;
+				width: 1265px;
 				height: 50px;
 				top: 515px;
 				left: 0px;
@@ -109,7 +106,7 @@
 				background: #80a1aa;
 			}
 			#sliderWrapper {
-				width: 853px;
+				width: 1150px;
 				height: 50px;
 				border-radius: 10px;
 				overflow: hidden;
@@ -170,8 +167,8 @@
 	<body>
 		<div id="content">
 			<div id="container">
-				<img id="map" src="map.png" width="950" height="475">
-				<canvas id="canvas" width="950" height="475"></canvas>
+				<img id="map" src="SUJ_map.png" width="1265" height="429">
+				<canvas id="canvas" width="1265" height="429"></canvas>
 				<div class="label" id="stage1" style="left:105px; top:220px; width:160px"></div>
 				<div class="label" id="stage2" style="left:490px; top: 20px; width: 90px; height:46px"></div>
 				<div class="label" id="stage3" style="left:160px; top:335px; width:140px; height:34px"></div>
@@ -277,18 +274,18 @@
 						<div class="day n" style="left: 360px"><span>Aufbautag</span></div>
 						<div class="day n" style="left: 720px"><span>Aufbautag</span></div>
 						<div class="day n" style="left:1080px"><span>Aufbautag</span></div>
-						<div class="day b" style="left:1440px"><span>Tag 1</span></div>
-						<div class="day n" style="left:1800px"><span>Tag 1</span></div>
-						<div class="day n" style="left:2160px"><span>Tag 1</span></div>
-						<div class="day n" style="left:2520px"><span>Tag 1</span></div>
-						<div class="day b" style="left:2880px"><span>Tag 2</span></div>
-						<div class="day n" style="left:3240px"><span>Tag 2</span></div>
-						<div class="day n" style="left:3600px"><span>Tag 2</span></div>
-						<div class="day n" style="left:3960px"><span>Tag 2</span></div>
-						<div class="day b" style="left:4320px"><span>Tag 3</span></div>
-						<div class="day n" style="left:4680px"><span>Tag 3</span></div>
-						<div class="day n" style="left:5040px"><span>Tag 3</span></div>
-						<div class="day n" style="left:5400px"><span>Tag 3</span></div>
+						<div class="day b" style="left:1440px"><span>Day 1</span></div>
+						<div class="day n" style="left:1800px"><span>Day 1</span></div>
+						<div class="day n" style="left:2160px"><span>Day 1</span></div>
+						<div class="day n" style="left:2520px"><span>Day 1</span></div>
+						<div class="day b" style="left:2880px"><span>Day 2</span></div>
+						<div class="day n" style="left:3240px"><span>Day 2</span></div>
+						<div class="day n" style="left:3600px"><span>Day 2</span></div>
+						<div class="day n" style="left:3960px"><span>Day 2</span></div>
+						<div class="day b" style="left:4320px"><span>Day 3</span></div>
+						<div class="day n" style="left:4680px"><span>Day 3</span></div>
+						<div class="day n" style="left:5040px"><span>Day 3</span></div>
+						<div class="day n" style="left:5400px"><span>Day 3</span></div>
 					</div>
 				</div>
 				<div class="marker"></div>

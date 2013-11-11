@@ -214,11 +214,6 @@ function init() {
 	}
 	nearFieldGrid = nearFieldGrid.sort( function (a,b) { return (a.r == b.r) ? (a.a - b.a) : (a.r - b.r);} );
 
-	sessions.forEach(function (session) {
-		session.startTime = session.startInt + (parseInt(session.date.substr(8,2),10)-5)*(24*60);
-		session.endTime   = session.startTime + session.duration;
-		session.stage     = (session.room.substr(0,5) == 'stage') ? parseInt(session.room.substr(6,1), 10) : undefined;
-	})
 }
 
 function startPlay() {
@@ -323,38 +318,13 @@ function renderInfos() {
 	var m = Math.floor(currentTime) % 60;
 	h = (h+100+'').substr(1);
 	m = (m+100+'').substr(1);
-	$('#timer').html('Tag '+d+' - '+h+':'+m);
+	$('#timer').html('Day '+d+' - '+h+':'+m);
 
-	var text = 'Aktive MAC-Adressen: '+activeCount;
+	var text = 'Active MAC Addresses: '+activeCount;
 	if (selectedCount > 0) text += '<br><span style="color:#ee5000">Ausgewählte MAC-Adressen: '+activeSelectedCount+'</span>';
 	$('#statistics').html(text);
 
 	$('#sliderInner').css('left', -(currentTime-441));
-
-	var stages = ['', '', '', '', '', '', '', ''];
-	sessions.forEach(function (session) {
-		if ((session.startTime <= currentTime) && (currentTime < session.endTime)) {
-			if (session.stage !== undefined) {
-				stages[session.stage] = 'Stage '+session.stage+': '+session.title;
-			}
-		}
-	});
-	for (var i = 1; i <= 7; i++) (function () {
-		var node = $('#stage'+i);
-		var oldText = node.attr('oldText');
-		var newText = stages[i];
-		node.attr('oldText', newText);
-
-		if (oldText != newText) {
-			if (mouseDrag) {
-				node.html(newText);
-			} else {
-				node.stop(true);
-				node.fadeOut(100, function () { node.html(newText); });
-				node.fadeIn(100);
-			}
-		}
-	})();
 }
 
 function updatePosition() {
@@ -559,7 +529,7 @@ function renderCanvas() {
 	})
 	context.stroke();
 
-	context.fillStyle = 'rgb(238,80,0)';
+	context.fillStyle = 'rgb(238,80,200)';
 	drawLists[2].forEach(function (client) {
 		context.beginPath();
 		context.arc(client.x, client.y, radius*1.3, 0, 2*Math.PI, false);
@@ -567,7 +537,7 @@ function renderCanvas() {
 	});
 
 	var r = (selectedCount > 0) ? 0.4 : 1;
-	context.fillStyle = 'rgb(0,0,0)';
+	context.fillStyle = 'rgb(238,80,0)';
 	drawLists[3].forEach(function (client) {
 		context.beginPath();
 		context.arc(client.x, client.y, radius*r, 0, 2*Math.PI, false);
