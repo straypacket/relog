@@ -1,6 +1,6 @@
-var startTime = (24*0 +  9)*60;
-var minTime =   (24*0 + 15)*60;
-var maxTime =   (24*3 + 24)*60;
+var startTime = (24*0 + 9)*60;
+var minTime =   (24*0 + 0)*60;
+var maxTime =   (24*2 + 24)*60;
 
 
 var currentTime = startTime;
@@ -318,8 +318,8 @@ function renderInfos() {
 	var m = Math.floor(currentTime) % 60;
 	h = (h+100+'').substr(1);
 	m = (m+100+'').substr(1);
-	//$('#timer').html('Day '+d+' - '+h+':'+m);
-	$('#timer').html(currentTime);
+	$('#timer').html('Day '+d+' - '+h+':'+m);
+	//$('#timer').html(currentTime);
 
 	var text = 'Active MAC Addresses: '+activeCount;
 	if (selectedCount > 0) text += '<br><span style="color:#ee5000">Active MAC Addresses: '+activeSelectedCount+'</span>';
