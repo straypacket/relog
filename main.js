@@ -287,7 +287,7 @@ function updateData() {
 
 		var client = clients[index];
 		if (client.point != point) {
-			if (point !== undefined) {
+			if (point !== undefined && data.points[point]) {
 				client.x0 = data.points[point].x*width;
 				client.y0 = data.points[point].y*height;
 				client.r0 = 1;
