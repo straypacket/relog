@@ -171,7 +171,7 @@ function init() {
 		return false;
 	}, false);
 
-	// Populate slide bar hour info
+	// Populate slide bar hour info (8 hour ticks per day)
 	var hour_info = $.map($(Array(maxTime/60/24*4*8)),function(val, i) { return i*60; })
 	hour_info.forEach(function(i,first_hour) { 
 		if(i%180==0){ //hour b
@@ -182,7 +182,7 @@ function init() {
 		}
 	});
 
-	// Populate slide bar day info
+	// Populate slide bar day info (4 time slot divisions per day)
 	var day_info = $.map($(Array(maxTime/60/24*4)),function(val, i) { return i*360; })
 	var fist_day = 9
 	day_info.forEach(function(i,first_day) { 
@@ -236,6 +236,9 @@ function init() {
 		}
 	}
 	nearFieldGrid = nearFieldGrid.sort( function (a,b) { return (a.r == b.r) ? (a.a - b.a) : (a.r - b.r);} );
+
+	// Rickshaw graph
+	ricksaw_plot([data['times'], data['time_matrix']]);
 
 }
 
@@ -616,3 +619,27 @@ function valid(point) {
 	return (point != null) && (point !== undefined);
 }
 
+function ricksaw_plot(data) {
+	ts_data = []
+	for (var i = 0; i < data[0].length; i++){
+		ts_data.push({x: data[0][i], y: data[1][i]}) 
+	}
+
+	var graph = new Rickshaw.Graph( {
+	        width: maxTime,
+	        element: document.getElementById("sliderInner"),
+	        renderer: 'area',
+	        padding: { top: 0.1 },
+	        series: [
+	                {
+	                        data: ts_data,
+	                        color: 'lightblue',
+	                        name: "blue",
+	                }
+	        ]
+	} );
+
+	//var hover = new Rickshaw.Graph.HoverDetail({ graph: graph });
+
+	graph.render();
+}
