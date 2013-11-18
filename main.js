@@ -238,7 +238,7 @@ function init() {
 	nearFieldGrid = nearFieldGrid.sort( function (a,b) { return (a.r == b.r) ? (a.a - b.a) : (a.r - b.r);} );
 
 	// Rickshaw graph
-	ricksaw_plot([data['times'], data['time_matrix']]);
+	ricksaw_plot([data['times'], data['time_matrix'], data['points']]);
 
 }
 
@@ -640,27 +640,27 @@ function ricksaw_plot(data) {
 	                {
 	                        data: ts_data[0],
 	                        color: color(1),
-	                        name: "ap 0",
+	                        name: data[2][0]['room'],
 	                },
 	                {
 	                        data: ts_data[1],
 	                        color: color(2),
-	                        name: "ap 0",
+	                        name: data[2][1]['room'],
 	                },
 	                {
 	                        data: ts_data[2],
 	                        color: color(3),
-	                        name: "ap 0",
+	                        name: data[2][2]['room'],
 	                },
 	                {
 	                        data: ts_data[3],
 	                        color: color(4),
-	                        name: "ap 0",
+	                        name: data[2][3]['room'],
 	                },
 	                {
 	                        data: ts_data[4],
 	                        color: color(5),
-	                        name: "ap 0",
+	                        name: data[2][4]['room'],
 	                }
 	        ]
 	});
