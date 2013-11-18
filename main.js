@@ -1,6 +1,6 @@
 var startTime = (24*0 + 9)*60;
 var minTime =   (24*0 + 0)*60;
-var maxTime =   (24*3 + 24)*60;
+var maxTime =   (24*7 + 24)*60;
 
 
 var currentTime = startTime;
@@ -171,6 +171,29 @@ function init() {
 		return false;
 	}, false);
 
+	// Populate slide bar hour info
+	var hour_info = $.map($(Array(maxTime/60/24*4*8)),function(val, i) { return i*60; })
+	hour_info.forEach(function(i,first_hour) { 
+		if(i%180==0){ //hour b
+			$('#sliderInner').append('<div class="hour b" style="left:'+i+'px"><span>'+(i/60)%24+':00</span></div>');
+		}
+		else{ //hour n
+			$('#sliderInner').append('<div class="hour n" style="left:'+i+'px"></div>');
+		}
+	});
+
+	// Populate slide bar day info
+	var day_info = $.map($(Array(maxTime/60/24*4)),function(val, i) { return i*360; })
+	var fist_day = 9
+	day_info.forEach(function(i,first_day) { 
+		if(i%1440==0){ //day b
+			fist_day += 1
+			$('#sliderInner').append('<div class="day b" style="left:'+i+'px"><span>'+fist_day+'th November</span></div>');
+		}
+		else{ //day n
+			$('#sliderInner').append('<div class="day n" style="left:'+i+'px"><span>'+fist_day+'th November</span></div>');
+		} 
+	});
 
 	$(document).mousemove(function (e) {
 		mouseDragMove(e.pageX, e.pageY);
@@ -188,7 +211,7 @@ function init() {
 	}, false);
 
 	var index = -1;
-	for (var time = -60; time <= (4*24+1)*60; time++) {
+	for (var time = -60; time <= maxTime; time++) {
 		while (data.times[index+1] <= time) index++;
 		time2index[time] = index;
 	}
