@@ -620,24 +620,50 @@ function valid(point) {
 }
 
 function ricksaw_plot(data) {
-	ts_data = []
-	for (var i = 0; i < data[0].length; i++){
-		ts_data.push({x: data[0][i], y: data[1][i]}) 
-	}
+	var ts_data = []
 
-	var graph = new Rickshaw.Graph( {
+	Object.keys(data[1]).forEach(function(k){
+		ts_data[k] = [];
+
+		for (var i = 0; i < data[0].length; i++){
+			ts_data[k].push({x: data[0][i], y: data[1][k][i]}) 
+		}
+	});
+
+	var color = d3.scale.linear().domain([1,5]).range(['lightblue', 'steelblue']);
+	var graph = new Rickshaw.Graph({
 	        width: maxTime,
 	        element: document.getElementById("sliderInner"),
 	        renderer: 'area',
 	        padding: { top: 0.1 },
 	        series: [
 	                {
-	                        data: ts_data,
-	                        color: 'lightblue',
-	                        name: "blue",
+	                        data: ts_data[0],
+	                        color: color(1),
+	                        name: "ap 0",
+	                },
+	                {
+	                        data: ts_data[1],
+	                        color: color(2),
+	                        name: "ap 0",
+	                },
+	                {
+	                        data: ts_data[2],
+	                        color: color(3),
+	                        name: "ap 0",
+	                },
+	                {
+	                        data: ts_data[3],
+	                        color: color(4),
+	                        name: "ap 0",
+	                },
+	                {
+	                        data: ts_data[4],
+	                        color: color(5),
+	                        name: "ap 0",
 	                }
 	        ]
-	} );
+	});
 
 	//var hover = new Rickshaw.Graph.HoverDetail({ graph: graph });
 
